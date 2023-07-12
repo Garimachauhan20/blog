@@ -1,5 +1,4 @@
-
-<%= form_with model: [ @post, @post.comments.build ] do |form| %>
+<%= form_with model: [ @post, @post.comments.build ],remote: true do |form| %>
   <p>
     <%= form.text_field :commenter, class:"comment-text1 form-control",placeholder:"commenter name"%>
   </p>

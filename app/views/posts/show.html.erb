@@ -31,13 +31,15 @@
 </ul>
 <h4 class="comment-head"><strong>Comment</strong></h4>
 <hr class="show-ruler">
+
 <div class="comment-form">
 <%= render 'comments/form' %>
 </div>
 
-	<div class="comment-section">
+	<div id="partial-comment" class="comment-section">
 		<%= render 'comments/comment' %>
 	</div>
+
 <hr class="show-ruler">
 <br>
 <footer class="border-top">

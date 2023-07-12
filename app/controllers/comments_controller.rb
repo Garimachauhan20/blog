@@ -1,17 +1,11 @@
 class CommentsController < ApplicationController
 	def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+    @comment = @post.comments.create(comment_params)
     
     respond_to do |format|
-
-      if @comment.save
-        # format.html { render :comment, comment: @comment }
-        format.js
-      else
-        # format.html { redirect_to @comment, alert: 'Comment could not be saved.' }
-        format.js 
-      end
+          format.html {redirect_to comments_comment_path}
+          format.js 
     end
   end
 

@@ -33,21 +33,11 @@ function validateForm() {
   return returnval;
 }
 
-const fileName= document.querySelector('.file-name');
+const fileName = document.querySelector('.file-name');
+const fileInput = document.querySelector('.form-control-file');
 
-  fileName.addEventListener('input', function(event){
-	const inputevent=event.target.files[0]
-	const inputvalue= inputevent ? inputevent.name : '';
-	fileName.textContent=inputvalue;
-})
-
-
-
-// $(document).ready(function(){
-// 	$("input").focus(function(){
-// 	  $(".title-error").hide();
-// 	});
-// 	$(".form-text-body").focus(function(){
-// 	  $(".body-error").hide();
-// 	});
-// });
+fileInput.addEventListener('change', function(event) {
+  const selectedFile = event.target.files[0];
+  const fileNameValue = selectedFile ? selectedFile.name : '';
+  fileName.textContent = fileNameValue;
+});

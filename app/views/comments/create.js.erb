@@ -1,2 +1,1 @@
-$('#comments-container').html("<%= j render(:partial => 'comments/comment') %>")
-
+$("#partial-comment").html("<%= escape_javascript(render (partial: 'comments/comment'), locals: { comment: @comment } ) %>");
