@@ -1,0 +1,27 @@
+<div style="background-image: url('<%=asset_path('home-bg.jpg')%>')">
+<h1 class="view-head"><b>Hey</b>, see our thoughts, stories and ideas...</h1>
+<div class="card-boxes">
+	<% @posts.each do |post| %>
+
+		  <div class="card">
+			  <%= image_tag url_for(post.image),class:"card-img-top img-card" %>
+
+			<div class="card-body">
+
+		      <h5 class="card-title">
+		      	<%= link_to post.title , post_path(post),class:"card-link"%>
+      		  </h5>
+		
+		   	</div>
+		    <div class="card-footer">
+		      <small class="text-muted">
+		      	<p class="creation-time">
+            		<%=post.created_at.try(:strftime, "%d %b %Y  %H:%M %p")%>
+				</p>	
+	      	  </small>
+		    </div>
+		  </div>
+
+	<% end %>
+</div>
+</div>

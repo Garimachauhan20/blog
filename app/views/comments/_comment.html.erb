@@ -1,0 +1,25 @@
+<!-- div id="content"
+
+= form_tag({:action => 'create'}, :id => 'subject_form',  :remote => true) do
+  = submit_tag 'Add'
+ -->
+<div id="comments-container">
+  
+<br>
+<% @post.comments.each do |comment| %>
+
+<p class="commenter">
+  <strong><%= comment.commenter %></strong>
+</p>
+
+<p class="creation-time">
+            <%=comment.created_at.try(:strftime, "%d %b %Y %R %p")%>
+</p>
+
+<p class="commen_t"> 
+  <%= comment.body %>
+</p>
+
+<% end %>
+
+</div>
