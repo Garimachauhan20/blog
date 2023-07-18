@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 	def create
     @post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
-    
+    byebug
     respond_to do |format|
           format.html {redirect_to comments_comment_path}
           format.js 
