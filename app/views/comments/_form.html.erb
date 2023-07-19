@@ -1,13 +1,16 @@
-<%= form_with model: [ @post, @post.comments.build ],remote: true do |form| %>
-  <p>
-    <%= form.text_field :commenter, class:"comment-text1 form-control",placeholder:"commenter name"%>
-  </p>
+<%= turbo_frame_tag "comment_form" do %>
+  <%= form_with model:[ @post, @post.comments.build ] do |form| %>
+    <p>
+      <%= form.text_field :commenter, class:"comment-text1 form-control",placeholder:"commenter name"%>
+    </p>
 
-  <p>
-    <%= form.text_area :body, class:"comment-text2 form-control",placeholder:"Add comment" %>
-  </p>
-  <p>
-    <%= form.submit 'Submit',class:"comment-button" %>
-  </p>
+    <p>
+      <%= form.text_area :body, class:"comment-text2 form-control",placeholder:"Add comment" %>
+    </p>
+    <p>
+      <%= form.submit 'Submit',class:"comment-button" %>
+    </p>
+  <% end %>
 <% end %>
+
 

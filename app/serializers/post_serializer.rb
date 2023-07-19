@@ -8,6 +8,5 @@ class PostSerializer < ActiveModel::Serializer
 	def image_url
       return rails_blob_path(object.image , only_path: true) if object.image.attached?
         return nil 
-
 	end
 end

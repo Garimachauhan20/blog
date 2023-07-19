@@ -32,13 +32,16 @@
 <h4 class="comment-head"><strong>Comment</strong></h4>
 <hr class="show-ruler">
 
-<div class="comment-form">
-<%= render 'comments/form' %>
-</div>
-
-	<div id="partial-comment" class="comment-section">
-		<%= render 'comments/comment' %>
-	</div>
+    <div class="comment-form">
+        <%= render 'comments/form', locals: { comment: Comment.new }%>
+    </div>
+    
+    <div class="comment-section">
+		<%= turbo_stream_from @post, :comments %>
+        <div id="<%= "comments_#{@post.id}" %>">
+        <%= render @post.comments.order(created_at: :desc)%>
+        </div>
+    </div>
 
 <hr class="show-ruler">
 <br>

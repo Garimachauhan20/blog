@@ -43,3 +43,5 @@ group :test do
 end
 
 gem 'active_model_serializers'
+
+gem "hotwire-rails"
