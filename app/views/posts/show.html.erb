@@ -1,84 +1,86 @@
 <div style="background-color: white;">
-<article class="show-article">
-	<br>
-	<header class="mb-4 " >
-	<h1 class="fw-bolder mb-1 show-head"><%= @post.title %></h1>
-	</header>	
+    <article class="show-article">
+    	<br>
+    	<header class="mb-4 " >
+    	<h1 class="fw-bolder mb-1 show-head"><%= @post.title %></h1>
+    	</header>	
 
-<!-- Preview image figure-->
-	<figure class="mb-4">
+    	<figure class="mb-4">
 
-		 <%= image_tag url_for(@post.image), class:"img-fluid rounded" %>
+    		 <%= image_tag url_for(@post.image), class:"img-fluid rounded" %>
 
-	</figure>
-<!-- Post content-->
-<br>
-	<section class="mb-5">
-	    
-	    <p class="fs-5 mb-4"><%= @post.body %></p>
+    	</figure>
+    <br>
+    	<section class="mb-5">
+    	    
+    	    <p class="fs-5 mb-4"><%= @post.body %></p>
 
-	</section>
-</article>
+    	</section>
+    </article>
 
-<ul class="show-div">
+    <ul class="show-div">
 
-		<%= link_to "Edit", edit_post_path, class:"btn show-link show-button-edit" %>
+    		<%= link_to "Edit", edit_post_path, class:"btn show-link show-button-edit" %>
 
-	 	<%= link_to "Delete", post_path(@post) ,data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class:"btn show-link show-button-delete"%>
-</ul>
-<h4 class="comment-head"><strong>Comment</strong></h4>
-<hr class="show-ruler">
+    	 	<%= link_to "Delete", post_path(@post) ,data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      }, class:"btn show-link show-button-delete"%>
+    </ul>
+    <h4 class="comment-head"><strong>Comment</strong></h4>
+    <hr class="show-ruler">
 
     <div class="comment-form">
         <%= render 'comments/form', locals: { comment: Comment.new }%>
     </div>
-    
+
     <div class="comment-section">
-		<%= turbo_stream_from @post, :comments %>
+        <%= render 'comments/count'%>
+    </div>
+
+    <div class="comment-section">
+		<%= turbo_stream_from @post, 'comments' %>
         <div id="<%= "comments_#{@post.id}" %>">
-        <%= render @post.comments.order(created_at: :desc)%>
+            <%= render @post.comments.order(created_at: :desc)%>
         </div>
     </div>
 
-<hr class="show-ruler">
-<br>
-<footer class="border-top">
-	<br>
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-md-10 col-lg-8 col-xl-7">
-                        <ul class="list-inline text-center">
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+    <hr class="show-ruler">
+    <br>
+    <footer class="border-top">
+    	   <br>
+                <div class="container px-4 px-lg-5">
+                    <div class="row gx-4 gx-lg-5 justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-7">
+                            <ul class="list-inline text-center">
+                                <li class="list-inline-item">
+                                    <a href="#!">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fas fa-circle fa-stack-2x"></i>
+                                            <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#!">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fas fa-circle fa-stack-2x"></i>
+                                            <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#!">
+                                        <span class="fa-stack fa-lg">
+                                            <i class="fas fa-circle fa-stack-2x"></i>
+                                            <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </footer>
+    </footer>
 </div>
