@@ -1,15 +1,11 @@
- <div id="<%= dom_id(comment) %>">
+ <p class="commenter">
+    <strong><%= comment.commenter %></strong>
+ </p>
 
-    <p class="commenter">
-       <strong><%= comment.commenter %></strong>
-    </p>
+ <p class="creation-time">
+    <%=comment.created_at.try(:strftime, "%d %b %Y %R %p")%>
+ </p>
 
-    <p class="creation-time">
-       <%=comment.created_at.try(:strftime, "%d %b %Y %R %p")%>
-    </p>
-
-    <p class="commen_t"> 
-        <%= comment.body %>
-    </p>
-    
-</div>
+ <p class="commen_t"> 
+     <%= comment.body %>
+ </p>

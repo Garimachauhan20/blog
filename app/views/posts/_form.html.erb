@@ -1,56 +1,17 @@
-<%= form_with model: post , name: 'my_form', html: {onsubmit: 'return validateForm()'} do |form| %>
-
-  <div>
-    <%= form.label :title, class:"form-label"%><br>
-    <%= form.text_field :title, class:"form-text",placeholder:"Give title to your Blog " %>
-      <div class="title-error"></div>
-
-    <% post.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+<%= simple_form_for (@post) do |f| %>
+<div id="form-inputs">
+  <%= f.input :first_tag %>
+</div>
+  <div id='nested_forms'>
+    <%= f.simple_fields_for :nested_forms do |nested_f| %>
+    <%= nested_f.text_field :input %>
+      <%= link_to_remove_association "RemoveTag", nested_f %>   
     <% end %>
   </div>
-
-  <div >
-    <%= form.label :body, class:"form-label"%><br>
-    <%= form.text_area :body, class:"form-text-body",placeholder:"Write your Blog..."%><br>
-      <div class="body-error"></div>
-
-    <% post.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-
-  <div class="new-bottom">
-
-   <br>
-
-
-   <div class="image-category">
-
-    <%= form.file_field :image, class:"image-field "%>
-
-    <% post.errors.full_messages_for(:image).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
-
-
-
-    <div class="image-error"></div>
-    <br>
-
-    <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }), {prompt: "Select category"}, class:"form-control category-dropdown " %>
-    <br>
-
-    <div>
-          <%= form.text_field :tag, value: post.tag.join(", ") %>
-    </div>
-
-    <div>
-         <%= form.submit 'Submit', class:"submit-button"%>
-    </div>
-
-  </div>
-
+<div id="links">
+  <%= link_to_add_association "Add Tag", f, :nested_forms %>
+</div>
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
 <% end %>

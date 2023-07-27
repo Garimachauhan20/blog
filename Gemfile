@@ -17,7 +17,7 @@ gem "pg"
 
 gem 'jquery-rails'
 
-gem "turbo-rails"
+# gem "turbo-rails"
 
 gem "stimulus-rails"
 
@@ -43,3 +43,10 @@ group :test do
 end
 
 gem 'active_model_serializers'
+
+gem 'cocoon', '~>1.2'
+gem 'simple_form','~>5.2'
+
+gem 'devise'
+gem 'delayed_job_active_record'
+

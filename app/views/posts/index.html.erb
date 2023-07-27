@@ -9,6 +9,9 @@
 </header>
 
 <div class="center-div">
+
     <%= link_to "View all blogs", posts_view_path, class:"btn button-link index-button" %>
-    <%= link_to "Create your blog", new_post_path, class:"btn button-link index-button"%>
+    <% if isAdmin?(current_user) %>
+     <%= link_to "Create your blog", new_post_path, class:"btn button-link index-button"%>
+     <% end %>
 </div>

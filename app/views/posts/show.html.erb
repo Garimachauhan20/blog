@@ -18,6 +18,8 @@
     	</section>
     </article>
 
+    <% if isAdmin?(current_user) %>
+
     <ul class="show-div">
 
     		<%= link_to "Edit", edit_post_path, class:"btn show-link show-button-edit" %>
@@ -27,6 +29,7 @@
                         turbo_confirm: "Are you sure?"
                       }, class:"btn show-link show-button-delete"%>
     </ul>
+    <% else %>
     <h4 class="comment-head"><strong>Comment</strong></h4>
     <hr class="show-ruler">
 
@@ -39,13 +42,13 @@
     </div>
 
     <div class="comment-section">
-		<%= turbo_stream_from @post, 'comments' %>
-        <div id="<%= "comments_#{@post.id}" %>">
+        <div id="show_comments">
             <%= render @post.comments.order(created_at: :desc)%>
         </div>
     </div>
 
     <hr class="show-ruler">
+    <% end %>
     <br>
     <footer class="border-top">
     	   <br>

@@ -33,6 +33,7 @@ function validateForm() {
   return returnval;
 }
 
+
 const fileName = document.querySelector('.file-name');
 const fileInput = document.querySelector('.form-control-file');
 
