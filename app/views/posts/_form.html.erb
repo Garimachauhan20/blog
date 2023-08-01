@@ -1,17 +1,3 @@
-<%= simple_form_for (@post) do |f| %>
-<div id="form-inputs">
-  <%= f.input :first_tag %>
-</div>
-  <div id='nested_forms'>
-    <%= f.simple_fields_for :nested_forms do |nested_f| %>
-    <%= nested_f.text_field :input %>
-      <%= link_to_remove_association "RemoveTag", nested_f %>   
-    <% end %>
-  </div>
-<div id="links">
-  <%= link_to_add_association "Add Tag", f, :nested_forms %>
-</div>
-<div class="form-actions">
-  <%= f.button :submit %>
-</div>
-<% end %>
+
+
+

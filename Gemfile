@@ -17,7 +17,7 @@ gem "pg"
 
 gem 'jquery-rails'
 
-# gem "turbo-rails"
+gem "turbo-rails"
 
 gem "stimulus-rails"
 

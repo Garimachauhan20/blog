@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_174252) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_27_065720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,7 +99,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_174252) do
     t.string "tag", default: [], array: true
     t.bigint "category_id", null: false
     t.text "first_tag"
+    t.bigint "user_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -136,4 +138,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_174252) do
   add_foreign_key "nested_forms", "posts"
   add_foreign_key "post_tags", "posts", column: "posts_id"
   add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "users"
 end

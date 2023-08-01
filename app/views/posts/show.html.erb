@@ -40,7 +40,7 @@
     <div class="comment-section">
         <%= render 'comments/count'%>
     </div>
-
+    <% end %>
     <div class="comment-section">
         <div id="show_comments">
             <%= render @post.comments.order(created_at: :desc)%>
@@ -48,7 +48,7 @@
     </div>
 
     <hr class="show-ruler">
-    <% end %>
+   
     <br>
     <footer class="border-top">
     	   <br>

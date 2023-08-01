@@ -1,0 +1,15 @@
+<%= fields model: @post do |form| %>
+  <%= form.fields_for :nested_forms, child_index: params[:index] do |task_form| %>
+    <%= turbo_stream.replace "add-tag" do %>
+      <%= form.submit "Add tag", 
+            formaction: nested_form_path(task_form.index.to_i + 1), 
+            formmethod: :post, 
+            formnovalidate: true, 
+            id: "add-tag" %>
+    <% end %>
+      
+    <%= turbo_stream.append "nested_forms" do %>
+      <%= render "form", form: task_form %>
+    <% end %>
+  <% end %>
+<% end %>

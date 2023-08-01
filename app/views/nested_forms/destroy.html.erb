@@ -1,0 +1,12 @@
+<%= fields model: @post do |form| %>
+
+  <%= form.fields_for :nested_forms, child_index: params[:index] do |task_form| %>
+  
+    <%= turbo_frame_tag "nested_form_#{task_form.index}" do %>
+	  <%= task_form.hidden_field :id, value: params[:id] %>
+      <%= task_form.hidden_field :_destroy, value: true %>
+    <% end %>
+
+  <% end %>
+
+<% end %>

@@ -8,6 +8,15 @@ Rails.application.routes.draw do
   resources :posts do 
     resources :comments 
   end
+  
+  resources :nested_forms, only: [], param: :index do
+    member do 
+      delete '(:id)' => "nested_forms#destroy", as: ""
+      post '/' => "nested_forms#create"
+
+    end
+  end  
+
 
   namespace :api do
     namespace :v1 do

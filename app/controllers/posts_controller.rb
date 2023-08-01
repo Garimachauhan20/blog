@@ -10,7 +10,6 @@ class PostsController < ApplicationController
 
 	def new 
 		@post = Post.new
-		@post.nested_forms.build
 	end
 
 	def create
@@ -48,7 +47,7 @@ class PostsController < ApplicationController
 	end
 	
 	def post_params
-		params.require(:post).permit(:title, :body, :status, :image, :category_id, :first_tag, nested_forms_attributes: %i[id input _destroy])
+		params.require(:post).permit(:title, :body, :status, :image, :category_id, :first_tag, nested_forms_attributes: [:id, :input, :_destroy])
 	end
 	
 

@@ -1,0 +1,14 @@
+<%= turbo_frame_tag "nested_form_#{form.index}" do %>
+
+<%= form.hidden_field :id %>
+<div>
+  <%= form.text_field :input %>
+</div>
+  <%= form.submit "Remove Tag",
+  	formaction: nested_form_path(form.index, form.object.id),
+  	formmethod: :delete,
+  	formnovalidate: true,
+  	data: { turbo_frame: "nested_form_#{form.index }"}
+  %>
+
+<% end %>
