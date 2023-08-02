@@ -1,4 +1,4 @@
-<%= form_with model: post , name: 'my_form', html: {onsubmit: 'return validateForm()'} do |form| %>
+<%= form_with model: post , name: 'my_form' do |form| %>
 
   <div>
     <%= form.label :title, class:"form-label"%><br>
@@ -47,7 +47,7 @@
           formaction: nested_form_path(@post.nested_forms.size), 
           formmethod: :post, 
           formnovalidate: true, 
-          id: "add-tag" %>
+          id: "add-tag"%>
     <div id="nested_forms">
       <%= form.fields_for :nested_forms do |task_form| %>
         <%= render "nested_forms/form", form: task_form %>
@@ -55,7 +55,7 @@
     </div>
 
      <div>
-         <%= form.submit 'Submit', class:"submit-button"%>
+         <%= form.submit 'Submit', onclick: "return validateForm()", class:"submit-button formsubmit"%>
     </div>
 
   </div>

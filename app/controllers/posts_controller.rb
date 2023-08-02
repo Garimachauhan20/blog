@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 	def create
 		@post = Post.new(post_params)
 
-		if @post.save
+		if @post.save 
 			redirect_to @post
 		else
 			render :new, status: :unprocessable_entity
@@ -50,5 +50,10 @@ class PostsController < ApplicationController
 		params.require(:post).permit(:title, :body, :status, :image, :category_id, :first_tag, nested_forms_attributes: [:id, :input, :_destroy])
 	end
 	
-
+	# def Submit?
+	# 	if params[:commit]=="Submit"
+	# 	  validateForm()
+	# 		# onclick: return validateform()
+	# 	end
+	# end
 end

@@ -33,12 +33,11 @@ function validateForm() {
   return returnval;
 }
 
+// const fileName = document.querySelector('.file-name');
+// const fileInput = document.querySelector('.form-control-file');
 
-const fileName = document.querySelector('.file-name');
-const fileInput = document.querySelector('.form-control-file');
-
-fileInput.addEventListener('change', function(event) {
-  const selectedFile = event.target.files[0];
-  const fileNameValue = selectedFile ? selectedFile.name : '';
-  fileName.textContent = fileNameValue;
-});
+// fileInput.addEventListener('change', function(event) {
+//   const selectedFile = event.target.files[0];
+//   const fileNameValue = selectedFile ? selectedFile.name : '';
+//   fileName.textContent = fileNameValue;
+// });
