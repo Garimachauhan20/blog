@@ -10,6 +10,16 @@ function validateForm() {
   const inputImage = document.querySelector('.image-field');
   let imageError= document.querySelector('.image-error');
 
+  const input = document.querySelector('.input-field').value;
+  let inputError=document.getElementsByClassName('input-error')
+
+  if (input.trim() === '') {
+		returnval = false;
+		for (var i = 0; i < inputError.length; i++) {
+				inputError[i].innerHTML = "Tags can't be blank";
+		}
+	}
+
   if (inputImage.files.length === 0) {
   	returnval = false;
 		imageError.innerHTML = "Please provide the image";

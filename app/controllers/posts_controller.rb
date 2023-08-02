@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 	end
 
 	def new 
-		@post = Post.new
+		@post = Post.new(nested_forms:[NestedForm.new])
 	end
 
 	def create
