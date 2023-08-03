@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
  before_action :authenticate_user!
+ before_action :get_post, only: [:show, :edit, :update, :destroy]
 	def index
 		@posts=Post.all
 	end
 
 	def show
-		@post=Post.find(params[:id])
 	end
 
 	def new 
@@ -22,12 +22,10 @@ class PostsController < ApplicationController
 		end
 	end
 
-	def edit
-		@post=Post.find(params[:id])
+	def edit		
 	end
 
 	def update
-		@post=Post.find(params[:id])
 		if @post.update(post_params)
 			redirect_to @post
 		else
@@ -36,7 +34,6 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post=Post.find(params[:id])
 		@post.destroy
 
 		redirect_to root_path, status: :see_other
@@ -45,9 +42,15 @@ class PostsController < ApplicationController
 	def view
 		@posts=Post.all
 	end
-	
+
+	private
+
 	def post_params
 		params.require(:post).permit(:title, :body, :status, :image, :category_id, :first_tag, nested_forms_attributes: [:id, :input, :_destroy])
+	end
+
+	def get_post
+		@post=Post.find(params[:id])
 	end
 	
 	# def Submit?

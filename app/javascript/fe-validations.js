@@ -10,15 +10,17 @@ function validateForm() {
   const inputImage = document.querySelector('.image-field');
   let imageError= document.querySelector('.image-error');
 
-  const input = document.querySelector('.input-field').value;
-  let inputError=document.getElementsByClassName('input-error')
+  let input = document.getElementsByClassName('input-field');
+  let inputError=document.getElementsByClassName('input-error');
 
-  if (input.trim() === '') {
-		returnval = false;
-		for (var i = 0; i < inputError.length; i++) {
-				inputError[i].innerHTML = "Tags can't be blank";
+  for (var j = 0; j < input.length; j++) {
+	  if (input[j].value === '') {
+		  returnval = false;
+				inputError[j].innerHTML = "Tags can't be blank"}
+		else{
+				inputError[j].innerHTML = ""}
 		}
-	}
+	
 
   if (inputImage.files.length === 0) {
   	returnval = false;
@@ -42,6 +44,8 @@ function validateForm() {
 	
   return returnval;
 }
+
+
 
 // const fileName = document.querySelector('.file-name');
 // const fileInput = document.querySelector('.form-control-file');

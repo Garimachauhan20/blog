@@ -1,6 +1,6 @@
-// $(document).ready(function() {
-//   $('.category-dropdown').select2();
-// });
+$(document).ready(function() {
+  $('.category-dropdown').select2();
+});
 
 
 
