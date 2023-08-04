@@ -10,7 +10,7 @@ function validateForm() {
   const inputImage = document.querySelector('.image-field');
   let imageError= document.querySelector('.image-error');
 
-  let input = document.getElementsByClassName('input-field');
+  let input = document.getElementsByClassName('tag-input-field');
   let inputError=document.getElementsByClassName('input-error');
 
   for (var j = 0; j < input.length; j++) {

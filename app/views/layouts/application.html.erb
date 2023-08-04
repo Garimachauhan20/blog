@@ -22,9 +22,13 @@
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+
     <%= stylesheet_link_tag "blog" %>
-    <%= javascript_include_tag "fe-validations" %>
     <%= javascript_include_tag "jqueryfile" %>
+
+    <%#= javascript_include_tag "fe-validations" %>
 
     <title>Blog</title>
   </head>
@@ -72,6 +76,5 @@
     <p class="alert"><%= alert %></p>
 
      <%= yield %>
-
   </body>
 </html>

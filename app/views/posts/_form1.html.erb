@@ -1,4 +1,4 @@
-<%= form_with model: post , name: 'my_form' do |form| %>
+<%= form_with model: post , name: 'my_form', id: "form1" do |form| %>
 
   <div>
     <%= form.label :title, class:"form-label"%><br>
@@ -36,7 +36,7 @@
     <div class="image-error"></div>
     <br>
     <%= form.select :category_id, options_for_select(Category.all.map { |category| [category.name, category.id] }), {prompt: "Select category"}, class:"form-control category-dropdown " %>
-  
+    <br>
     <br>
     <%= form.submit "Add tag", 
           formaction: nested_form_path(@post.nested_forms.size), 
@@ -50,7 +50,7 @@
     </div>
 
      <div>
-         <%= form.submit 'Submit', onclick: "return validateForm()", class:"submit-button formsubmit"%>
+         <%= form.submit 'Submit', class:"submit-button"%>
     </div>
 
   </div>
