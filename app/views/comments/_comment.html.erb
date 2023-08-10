@@ -1,11 +1,25 @@
- <p class="commenter">
-    <strong><%= comment.commenter %></strong>
- </p>
-
- <p class="creation-time">
-    <%=comment.created_at.try(:strftime, "%d %b %Y %R %p")%>
- </p>
-
+<% unless comment.parent_id || !comment.persisted? %> 
  <p class="commen_t"> 
-     <%= comment.body %>
+    <%= comment.body %>
  </p>
+  <p class="creation-time">
+    <%=comment.created_at.try(:strftime, "%d %b %Y ")%>
+  </p>
+  
+    <% if comment.replies.any? %>
+    <div class="card ml-5">
+  <div class="card-body">
+    <% comment.replies.each do |reply| %> 
+      <%= render partial: 'comments/reply', locals: { reply: reply } %>
+    <% end %>
+        </div>
+</div>
+  <% end %>
+
+    <%= link_to 'reply',new_post_comment_path(@post, parent_id: comment.id) %>
+
+<br>
+<br>
+  
+ <div id="reply_form_<%= comment.id %>"></div>
+ <% end %>

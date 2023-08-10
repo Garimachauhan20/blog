@@ -43,7 +43,10 @@
     <% end %>
     <div class="comment-section">
         <div id="show_comments">
-            <%= render @post.comments.order(created_at: :desc)%>
+           <% @post.comments.each do |comment| %>
+            <%= render comment %>
+            <% end %>
+
         </div>
     </div>
 

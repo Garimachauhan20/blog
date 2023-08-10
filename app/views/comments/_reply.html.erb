@@ -1,0 +1,15 @@
+<%=reply.body%>
+<br>
+<%= link_to 'reply',new_post_comment_path(@post, parent_id: reply.id) %>
+<br>
+<% if reply.replies.any? %>
+<div class="card ml-5">
+  <div class="card-body">
+	<% reply.replies.each do |reply2| %> 
+	<%= reply2.body %> 
+	<br>
+	<% end %>
+	</div>
+</div>
+<% end %>
+

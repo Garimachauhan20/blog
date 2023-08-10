@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'replies/create'
 
   devise_for :users
 
@@ -6,7 +7,7 @@ Rails.application.routes.draw do
   get "/posts/view", to: 'posts#view'
   
   resources :posts do 
-    resources :comments 
+    resources :comments
   end
   
   resources :nested_forms, only: [], param: :index do

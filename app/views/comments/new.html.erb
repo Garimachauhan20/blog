@@ -1,0 +1,8 @@
+<%= form_with(model: [@post, @post.comments.build]) do |form|%>
+
+	<%= form.hidden_field :parent_id, value: params[:parent_id] %>
+	<%= form.label "reply" %>
+	<%= form.text_field :body %>
+
+	<%= form.submit 'submit' %>
+<% end %>

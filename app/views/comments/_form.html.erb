@@ -1,8 +1,7 @@
   <%= form_with model:[ @post, @post.comments.build ], local: false do |form| %>
     <p>
-      <%= form.text_field :commenter, class:"comment-text1 form-control",placeholder:"commenter name"%>
+      <%= form.text_area :commenter, class:"comment-text2 form-control",placeholder:"Commenter name" %>
     </p>
-
     <p>
       <%= form.text_area :body, class:"comment-text2 form-control",placeholder:"Add comment" %>
     </p>
