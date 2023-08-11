@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
  before_action :authenticate_user!
- before_action :get_post, only: [:show, :edit, :update, :destroy]
+ before_action :get_post, only: [:show, :edit, :update, :destroy, :like]
 	def index
 		@posts=Post.all
 	end
@@ -42,6 +42,11 @@ class PostsController < ApplicationController
 
 	def view
 		@posts=Post.all
+	end
+
+	def like
+		Like.create(user_id: current_user.id, post_id: @post.id)
+		redirect_to post_path(@post)
 	end
 
 	private

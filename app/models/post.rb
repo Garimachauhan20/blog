@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 	belongs_to :category
 	belongs_to :user
 	has_many :nested_forms, dependent: :destroy
+	has_many :likes, dependent: :destroy
     accepts_nested_attributes_for :nested_forms, allow_destroy: true, 
     reject_if: :all_blank
 

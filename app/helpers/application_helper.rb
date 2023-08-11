@@ -16,4 +16,8 @@ module ApplicationHelper
     end 
   end
 
+  def liked?(post, user)
+  	post.likes.find_by("user_id":user.id)
+  end
+
 end

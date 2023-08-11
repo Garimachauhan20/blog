@@ -29,7 +29,17 @@
                         turbo_confirm: "Are you sure?"
                       }, class:"btn show-link show-button-delete"%>
     </ul>
+
     <% else %>
+
+    <% if liked? (@post, current_user) %>
+        <%= button_to 'like', like_path(@post), disabled: true%>
+    <% else %>
+        <%= button_to 'like', like_path(@post) %>
+    <% end %>
+
+        no. of likes <%=@post.likes.count%>
+
     <h4 class="comment-head"><strong>Comment</strong></h4>
     <hr class="show-ruler">
 
