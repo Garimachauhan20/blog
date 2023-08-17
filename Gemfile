@@ -50,3 +50,9 @@ gem 'simple_form','~>5.2'
 gem 'devise'
 gem 'delayed_job_active_record'
 
+gem 'will_paginate', '~> 4.0'
+gem 'will_paginate-bootstrap'
+gem 'friendly_id', '~> 5.4.0'
+gem "paranoia", "~> 2.2"
+gem 'amoeba'
+

@@ -4,7 +4,9 @@
 	<% @posts.each do |post| %>
 
 		  <div class="card">
-			  <%= image_tag url_for(post.image) ,class:"card-img-top img-card" %>
+			  <% if post.image.attached? %>
+			  <%= image_tag url_for(post.image),class:"card-img-top img-card"  %>
+			  <% end %>
 
 			<div class="card-body">
 
@@ -17,11 +19,13 @@
 		      <small class="text-muted">
 		      	<p class="creation-time">
             		<%=post.created_at.try(:strftime, "%d %b %Y  %H:%M %p")%>
+				  		  <%= link_to "Duplicate", duplicate_path(post) %>
 				</p>	
 	      	  </small>
 		    </div>
 		  </div>
-
 	<% end %>
 </div>
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
+

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
  before_action :authenticate_user!
- before_action :get_post, only: [:show, :edit, :update, :destroy, :like]
+ before_action :get_post, only: [:show, :edit, :update, :destroy, :like, :duplicate]
 	def index
 		@posts=Post.all
 	end
@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 	end
 
 	def new 
-		@post = Post.new(nested_forms:[NestedForm.new])
+		@post = Post.new
 	end
 
 	def create
@@ -41,12 +41,22 @@ class PostsController < ApplicationController
 	end
 
 	def view
-		@posts=Post.all
+		@posts=Post.paginate(page: params[:page], per_page: 6)
 	end
 
 	def like
 		Like.create(user_id: current_user.id, post_id: @post.id)
 		redirect_to post_path(@post)
+	end
+
+	def duplicate
+		@duplicate_post=@post.amoeba_dup
+		if @duplicate_post.save
+			redirect_to edit_post_path(@duplicate_post)
+		else
+			flash[:notice] = 'can\'t duplicate'
+			redirect_to @duplicate_post
+		end
 	end
 
 	private
@@ -56,13 +66,7 @@ class PostsController < ApplicationController
 	end
 
 	def get_post
-		@post=Post.find(params[:id])
+		@post=Post.friendly.find(params[:id])
 	end
 	
-	# def Submit?
-	# 	if params[:commit]=="Submit"
-	# 	  validateForm()
-	# 		# onclick: return validateform()
-	# 	end
-	# end
 end

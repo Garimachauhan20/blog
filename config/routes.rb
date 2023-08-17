@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   post '/post/:id/like', to: 'posts#like', as: 'like' 
-
+  get 'posts/:id/duplicate', to: 'posts#duplicate', as: 'duplicate'
   
   resources :nested_forms, only: [], param: :index do
     member do 

@@ -4,26 +4,22 @@
     	<header class="mb-4 " >
     	<h1 class="fw-bolder mb-1 show-head"><%= @post.title %></h1>
     	</header>	
-
     	<figure class="mb-4">
-
-    		 <%= image_tag url_for(@post.image), class:"img-fluid rounded" %>
-
+             <% if @post.image.attached? %>
+    		  <%= image_tag url_for(@post.image), class:"img-fluid rounded" %>
+             <%end%>
     	</figure>
     <br>
-    	<section class="mb-5">
-    	    
+    	<section class="mb-5">   	    
     	    <p class="fs-5 mb-4"><%= @post.body %></p>
-
     	</section>
     </article>
-
+    <% @post.nested_forms.each do |tag| %>
+        <%= tag.input %><br>
+    <% end %>
     <% if isAdmin?(current_user) %>
-
     <ul class="show-div">
-
     		<%= link_to "Edit", edit_post_path, class:"btn show-link show-button-edit" %>
-
     	 	<%= link_to "Delete", post_path(@post) ,data: {
                         turbo_method: :delete,
                         turbo_confirm: "Are you sure?"
@@ -31,22 +27,17 @@
     </ul>
 
     <% else %>
-
-    <% if liked? (@post, current_user) %>
+    <% if liked?(@post, current_user) %>
         <%= button_to 'like', like_path(@post), disabled: true%>
     <% else %>
         <%= button_to 'like', like_path(@post) %>
     <% end %>
-
         no. of likes <%=@post.likes.count%>
-
     <h4 class="comment-head"><strong>Comment</strong></h4>
     <hr class="show-ruler">
-
     <div class="comment-form">
         <%= render 'comments/form', locals: { comment: Comment.new }%>
     </div>
-
     <div class="comment-section">
         <%= render 'comments/count'%>
     </div>
@@ -59,9 +50,7 @@
 
         </div>
     </div>
-
-    <hr class="show-ruler">
-   
+    <hr class="show-ruler">   
     <br>
     <footer class="border-top">
     	   <br>
