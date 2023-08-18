@@ -1,3 +1,4 @@
+@<%= reply.user.name %><br>
 <%=reply.body%>
 <br>
 <%= link_to 'reply',new_post_comment_path(@post, parent_id: reply.id) %>
@@ -6,6 +7,7 @@
 <div class="card ml-5">
   <div class="card-body">
 	<% reply.replies.each do |reply2| %> 
+  @<%= reply2.user.name %><br>
 	<%= reply2.body %> 
 	<br>
 	<% end %>

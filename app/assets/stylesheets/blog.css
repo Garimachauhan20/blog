@@ -2,6 +2,9 @@ body {
   font-family: cursive;
   background-color: rgb(255, 243, 243);
 }
+.user-icon{
+  float: right;
+}
 .intro{
   font-size: 65px;
   font-weight: bold;
@@ -90,6 +93,7 @@ color:rgb(0, 0, 0);
  background-color:rgb(229, 236, 255);
    padding:12px 28px ;
   margin: 20px;
+  margin-bottom: 190px;
   border: none;
   box-shadow: 2px 2px 5px 1px rgb(160, 160, 160);
   font-size: 20px;
@@ -111,7 +115,24 @@ color:rgb(0, 0, 0);
   align-items: center;
   margin-top: 100px;
 }
-
+.pagination{
+    margin-right: auto;
+    margin-left: 8%;
+}
+.page-link{
+  color: black;
+  border-color: #0b0d0e;
+}
+.page-item.active .page-link{
+  color: white;
+  background-color: black;
+  border-color: black;
+}
+.page-link:hover{
+   color: black;
+  background-color: white;
+  border-color: black; 
+}
 .view-head{
   display: flex;
   justify-content: center;
@@ -202,9 +223,15 @@ text-decoration: none;
   margin-left: 150px;
   margin-top: 40px;
   }
-  .submit-button:active{
+.submit-button:active{
   transform: translateY(2px);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+.post-tags{
+background-color: lightblue;
+border-radius: 10px; 
+padding: 2px 3px;
+margin: 7px
 }
 .edit-page-top{
   height: 300px;
@@ -268,8 +295,8 @@ margin-left: auto;
   background-color: transparent;
 }
 .form-text-body:focus,.form-text:focus{
-outline: none;
-box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 .input-group{
   width: 500px;
@@ -285,32 +312,27 @@ box-shadow: none;
 }
 .comment-button{
   background-color:rgb(229, 236, 255);
-color:rgb(0, 0, 0);
+  color:rgb(0, 0, 0);
   border: none;
-  box-shadow: 2px 2px 10px dimgray;
+  box-shadow: 1px 1px 1px dimgray;
   font-size: 16px;
   border-radius: 7px;
   padding: 4px 17px; 
-  margin-left: 400px;
+  margin-left: 800px;
   }
-  .comment-text1{
-    width: 700px;
-    margin-left: 400px;
-    height: 50px;
-    border-radius: 8px;
-    background-color: rgb(230, 230, 230);
+  .comment-text{
+  width: 600px;
+  margin-left: 300px;
+  transition: width 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out;
+  border: none;
+  margin-top: 0;
+  background-color: transparent;
 }
-  .comment-text2{
-    width: 600px;
-    height: 40px;
-    margin-left: 500px;
-    border-radius: 8px;
-    background-color: rgb(230, 230, 230);
-}
-
-.comment-text1:focus,.comment-text2:focus{
+.comment-text:focus{
 outline: none;
 box-shadow: none;
+border-bottom: 1px solid black;
 }
 .commenter{
   font-size: 18px;

@@ -1,4 +1,5 @@
 <% unless comment.parent_id || !comment.persisted? %> 
+  @<%= comment.user.name %>
  <p class="commen_t"> 
     <%= comment.body %>
  </p>

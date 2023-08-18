@@ -1,31 +1,30 @@
 <div style="background-image: url('<%=asset_path('home-bg.jpg')%>')">
 <h1 class="view-head"><b>Hey</b>, see our thoughts, stories and ideas...</h1>
-<div class="card-boxes">
-	<% @posts.each do |post| %>
-
-		  <div class="card">
-			  <% if post.image.attached? %>
-			  <%= image_tag url_for(post.image),class:"card-img-top img-card"  %>
-			  <% end %>
-
-			<div class="card-body">
-
-		      <h5 class="card-title">
-		      	<%= link_to post.title , post_path(post),class:"card-link"%>
-      		  </h5>
-		
-		   	</div>
-		    <div class="card-footer">
-		      <small class="text-muted">
-		      	<p class="creation-time">
+	<div class="card-boxes">
+		<% @posts.each do |post| %>
+			  <div class="card">
+				  <% if post.image.attached? %>
+				  <%= image_tag url_for(post.image),class:"card-img-top img-card"  %>
+				  <% end %>
+				<div class="card-body">
+			      <h5 class="card-title">
+			      	<%= link_to post.title , post_path(post),class:"card-link"%>
+      		  </h5>			
+			   	</div>
+			    <div class="card-footer">
+			      <small class="text-muted">
+			      	<p class="creation-time">
             		<%=post.created_at.try(:strftime, "%d %b %Y  %H:%M %p")%>
-				  		  <%= link_to "Duplicate", duplicate_path(post) %>
-				</p>	
+
+				  		  <%= link_to duplicate_path(post) do %>
+				  		  <i class="fa-regular fa-copy fa-xl" style="color: #010409;float: right;"></i>
+				  		  <% end %>
+							</p>	
 	      	  </small>
-		    </div>
-		  </div>
-	<% end %>
-</div>
-<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+			    </div>
+			  </div>
+		<% end %>
+	</div>
+		<%= will_paginate @posts, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
 

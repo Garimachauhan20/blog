@@ -3,6 +3,12 @@
 <h1 class="new-head2">Edit your blog</h1>
 </div>
 <br>
-<div class="blog-create">
-    <%= render "form1", post: @post %> 
-</div>
+<section id="scroll">
+  <div class="container">
+        <div class="col-lg-6 order-lg-1">
+            <div class="p-5">
+               <%= render partial: "form1", locals: { post: @post } %>
+            </div>
+        </div>
+  </div>
+</section>

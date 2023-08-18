@@ -13,13 +13,18 @@
     	<section class="mb-5">   	    
     	    <p class="fs-5 mb-4"><%= @post.body %></p>
     	</section>
+        <div>
+        <% @post.nested_forms.each do |tag| %>
+            <span class="post-tags">
+                <%= tag.input %>
+            </span>    
+        <% end %> 
+        </div>       
     </article>
-    <% @post.nested_forms.each do |tag| %>
-        <%= tag.input %><br>
-    <% end %>
+
     <% if isAdmin?(current_user) %>
     <ul class="show-div">
-    		<%= link_to "Edit", edit_post_path, class:"btn show-link show-button-edit" %>
+    		<%= link_to "Edit", edit_post_path(@post), class:"btn show-link show-button-edit" %>
     	 	<%= link_to "Delete", post_path(@post) ,data: {
                         turbo_method: :delete,
                         turbo_confirm: "Are you sure?"
@@ -27,12 +32,17 @@
     </ul>
 
     <% else %>
+
     <% if liked?(@post, current_user) %>
-        <%= button_to 'like', like_path(@post), disabled: true%>
+        <%= button_to like_path(@post), disabled:true do%>
+        <i class="fa-solid fa-heart fa-2xl" style="color: #d93012;"></i>
+        <% end %>
     <% else %>
-        <%= button_to 'like', like_path(@post) %>
+        <%= button_to like_path(@post) do%>
+        <i class="fa-regular fa-heart fa-2xl" style="color: #000205;"></i>
+        <% end %>
     <% end %>
-        no. of likes <%=@post.likes.count%>
+        <i class="fa-regular fa-thumbs-up fa-lg" style="color: #070808;"></i> <%=@post.likes.count%>
     <h4 class="comment-head"><strong>Comment</strong></h4>
     <hr class="show-ruler">
     <div class="comment-form">
@@ -47,7 +57,6 @@
            <% @post.comments.each do |comment| %>
             <%= render comment %>
             <% end %>
-
         </div>
     </div>
     <hr class="show-ruler">   

@@ -1,17 +1,17 @@
-<header class="py-5 bg-light border-bottom mb-4" style="background-image: url('<%=asset_path('home-bg.jpg')%>')">
-
+<div class="py-5 bg-light border-bottom mb-4" style="background-image: url('<%=asset_path('home-bg.jpg')%>')">
+<br>
+<br>
+<br>
     <div class="container">
         <div class="text-center my-5">
             <h1 class="fw-bolder">Welcome to Blog Home!</h1>
             <p class="lead mb-0">Here you can read blogs and create your own blog</p>
         </div>
     </div>
-</header>
-
-<div class="center-div">
-
+    <div class="center-div">
     <%= link_to "View all blogs", posts_view_path, class:"btn button-link index-button" %>
     <% if isAdmin?(current_user) %>
      <%= link_to "Create your blog", new_post_path, class:"btn button-link index-button"%>
      <% end %>
+</div>
 </div>

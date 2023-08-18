@@ -23,7 +23,6 @@ gem "stimulus-rails"
 
 gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
 gem "bootsnap", require: false
 
 
@@ -33,7 +32,6 @@ end
 
 group :development do
   gem "web-console"
-
   end
 
 group :test do
@@ -51,8 +49,7 @@ gem 'devise'
 gem 'delayed_job_active_record'
 
 gem 'will_paginate', '~> 4.0'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 gem 'friendly_id', '~> 5.4.0'
 gem "paranoia", "~> 2.2"
 gem 'amoeba'
-
