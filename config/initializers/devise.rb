@@ -14,7 +14,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-   #config.secret_key = '30c0a6972fedb833d15d06925d08e9345b579eb249cfc5235d037defab702f235afcbbdcad820abd5d2d2ec0769424df345eaa74e32f4f95ec466dbf90760c9d'
+   config.secret_key = '30c0a6972fedb833d15d06925d08e9345b579eb249cfc5235d037defab702f235afcbbdcad820abd5d2d2ec0769424df345eaa74e32f4f95ec466dbf90760c9d'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -25,7 +25,7 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   
-  #config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+   config.mailer_sender = 'addmailingcheck@gmail.com'
 
   # Configure the class responsible to send e-mails.
    #config.mailer = 'Devise::Mailer'
@@ -152,13 +152,13 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-   #config.confirm_within = 3.days
+   config.confirm_within = 3.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  #config.reconfirmable = true
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]

@@ -43,8 +43,8 @@
                     <%= link_to "Home", root_path ,class:"nav-link"%>
                 </li>
 
-                <li class="<%=is_active?(posts_view_path) %>">
-                    <%= link_to "View blogs", posts_view_path ,class:"nav-link"%>
+                <li class="<%=is_active?(view_path) %>">
+                    <%= link_to "View blogs", view_path ,class:"nav-link"%>
                 </li>
                 <% if user_signed_in? %>
                 <% if current_user.role=='Admin' %>
@@ -66,7 +66,6 @@
             </ul>
         </div>
     </div>
-
             <% if user_signed_in? %>
             <%= link_to edit_user_registration_path, :class=> "nav-link" do %>
              <i class="fa-solid fa-user fa-xl user-icon" style="color: #ebf0ef;"></i>
@@ -74,13 +73,9 @@
             <% end %>                
 </nav>
 
-
-
-
-
 <!-- <p>Welcome <br><%#= current_user.name %></p> -->
-<!--     <p class="notice"><%#= notice %></p>
-    <p class="alert"><%#= alert %></p> -->
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
 
      <%= yield %>
   </body>

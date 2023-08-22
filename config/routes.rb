@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   root "posts#index"
-  get "/posts/view", to: 'posts#view'
+  get "view", to: 'posts#view'
 
   resources :posts do 
     resources :comments
