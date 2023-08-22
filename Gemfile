@@ -46,7 +46,7 @@ gem 'cocoon', '~>1.2'
 gem 'simple_form','~>5.2'
 
 gem 'devise'
-gem 'delayed_job_active_record'
+gem 'sidekiq'
 
 gem 'will_paginate', '~> 4.0'
 gem 'will_paginate-bootstrap4'

@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   
   # get 'likes/create'
@@ -29,5 +31,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :show, :create,:update, :destroy]
     end
   end
-
+  authenticate :user do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end

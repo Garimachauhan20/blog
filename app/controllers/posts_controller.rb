@@ -16,7 +16,8 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.user= current_user
 		if @post.save 
-		# UserMailer.with(user: current_user).welcome_email.deliver_now
+			# UserMailer.welcome_email(current_user.email).deliver_now
+		ExampleWorker.perform_at(1.minute.from_now, current_user.email)
 			redirect_to @post
 		else
 			render :new, status: :unprocessable_entity
