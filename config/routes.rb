@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :passwords, only:[:new, :create, :edit, :update]
+
   root "posts#index"
   get "view", to: 'posts#view'
 
